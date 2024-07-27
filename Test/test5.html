@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title></title>
+    <script src="Scripts/echarts.min.js"></script>//改一下路径
+    <style type="text/css">
+        html,
+        body,
+        form {
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div id="guanxitu" style="width: 80%; height: 80%;"></div>
+
+        <script type="text/javascript">
+
+            var myChart = echarts.init(document.getElementById('guanxitu'));
+            var graph = {
+                nodes: [
+                    { "id": "0", "name": "昆山XX设计有限公司", "attributes": { "modularity_class": 0 } },
+                    { "id": "1", "name": "上海XX设计有限公司", "attributes": { "modularity_class": 0 } },
+
+                    { "id": "2", "name": "赵某某", "attributes": { "modularity_class": 1 } },
+
+                    { "id": "3", "name": "主要人员", "attributes": { "modularity_class": 2 } },
+
+                    { "id": "4", "name": "苏州XX实业有限公司", "attributes": { "modularity_class": 3 } }
+                ],
+                links: [
+                    { "id": "0", "source": "0", "target": "2" },
+                    { "id": "1", "source": "1", "target": "2" },
+                    { "id": "2", "source": "2", "target": "3" },
+                    { "id": "3", "source": "2", "target": "1" },
+                    { "id": "4", "source": "3", "target": "0" },
+                ]
+            };
+
+            var categories = [
+                {
+                    id: 0,
+                    name: '公司',
+                    itemStyle: { normal: { color: '#c23531' } },
+                    symbolSize: [42, 42]
+                },
+                {
+                    id: 1,
+                    name: '主要成员',
+                    itemStyle: { normal: { color: '#61a0a8' } },
+                    symbolSize: [42, 42]
+                },
+                {
+                    id: 2,
+                    name: '自然人',
+                    itemStyle: { normal: { color: '#749f83' } },
+                    symbolSize: [42, 42]
+                },
+                {
+                    id: 3,
+                    name: '实业公司',
+                    itemStyle: { normal: { color: '#d48265' } },
+                    symbolSize: [42, 42]
+                }
+            ];
+            var winWidth = document.body.clientWidth;
+            var winHeight = document.body.clientHeight;
+
+            var option = {
+                legend: [{
+                    data: categories.map(function (a) {
+                        return a.name;
+                    }),
+                    top: 0,
+                    left: (winWidth - 1200) / 2,
+                    itemGap: 26,
+                    textStyle: {
+                        padding: [0, 12]
+                    },
+                    backgroundColor: '#f5f5f5'
+                }],
+                animationDurationUpdate: 1500,
+                animationEasingUpdate: 'quinticInOut',
+                series: [
+                    {
+                        type: 'graph',
+                        layout: 'force',
+
+                        data: graph.nodes,
+                        links: graph.links,
+
+                        roam: true,
+                        draggable: true,
+                        itemStyle: {
+                            normal: {
+
+                                color: function (params) {
+                                    var colorList = ['red', 'orange', 'green', 'blue', 'gray'];
+                                    return colorList[params.dataIndex]
+                                },
+
+                            }
+                        },
+                        symbolSize: function (value, params) {//改变节点大小
+                            var SizeList = [10, 15, 20, 25, 30];
+                            return SizeList[params.dataIndex]
+                        },
+
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'bottom',
+                                rich: {
+                                    bg: {
+                                        backgroundColor: '#f5f5f5'
+                                    }
+                                }
+                            }
+                        },
+                        force: {
+
+                            edgeLength: [10, winWidth / 2]
+                        }
+                    }
+                ]
+            };
+            myChart.setOption(option);
+
+
+
+            myChart.on('click', function (params) {
+                if (params.dataType == 'node') {
+                    if (params.name == "昆山XX设计有限公司") {
+                        window.location = "https://www.baidu.com/";//"square.aspx";
+                    }
+                }
+            });
+
+
+        </script>
+    </form>
+</body>
+
+</html>

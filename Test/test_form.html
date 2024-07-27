@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册表</title>
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+            color: gray;
+        } */
+        body {
+            font-family: 仿宋;
+            font-size: 16px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        /* div {
+            text-align: center;
+        } */
+    </style>
+
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <h4 id="one">首页</h4>
+    <form action="test1.html" method="post">
+        <label for="username" class="red">用户名:</label>
+        <input type="test" name="username" placeholder="请输入用户名" maxlength="6" id="username" />
+        <br />
+
+        <label for="pw" class="blue">密码:</label> &nbsp;
+        <input type="password" name="pw" id="pw" />
+        <br />
+
+        学历:&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="degrees" value="朴诚大专" checked="checked" id="degrees0" />
+        <label for="degrees0"> 朴诚大专</label>
+
+        <input type="radio" name="degrees" value="幼儿园" id="degrees1" />
+        <label for="degrees1"> 幼儿园 </label>
+
+        <input type="radio" name="degrees" value="小学" id="degrees2" />
+        <label for="degrees2"> 小学 </label>
+
+        <input type="radio" name="degrees" value="初中" id="degrees3" />
+        <label for="degrees3"> 初中 </label>
+        <br />
+
+        学历:&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="degrees" checked="checked" />朴诚大专 <input type="checkbox"
+            name="degrees" />幼儿园 <input type="checkbox" name="degrees" />小学 <input type="checkbox" name="degrees" />初中
+        <br />
+
+        <label for="sex">性别:</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <select name="sex" id="sex">
+
+            <option>男性</option>
+            <option>生理女性</option>
+            <option>女性</option>
+            <option>沃尔玛购物袋</option>
+            <option>武装直升机</option>
+            <option selected="selected">无</option>
+
+        </select>
+        <br /><br />
+
+        <input type="button" value="按了也没用按钮" name="key" id="one" /><br /><br />
+
+        上传文件:&nbsp;&nbsp;
+        <input type="file" value="上传文件" name="picture"> <br /><br />
+
+        <label>评价:</label>
+        <br />
+        <textarea rows="5" cols="20" name="evaluate" id="evaluate">
+        </textarea><br /><br />
+
+        <div class="pink"><img src="images/0004.jpg" width="150px" height="150px" /> </div> <br />
+        <div></div> <br />
+        <div></div> <br />
+<input type="submit" value="注册" name="submit0" /><br /><br />
+
+<input type="reset" value="重置" name="reset0" /><br /><br />
+
+<input type="button" value="按了也没用按钮" name="key" /><br /><br />
+
+
+    </form>
+</body>
+
+</html>
